@@ -39,7 +39,7 @@ public class TestMaze {
             System.out.print("Enter command: ");
             input = scan.nextLine();
             input.trim();
-            input.toLowerCase();
+            input = input.toLowerCase();
             if(input.equals("t")) {
                 keepAsking = !myMaze.takeStep();
             } else if(input.equals("s")) {
