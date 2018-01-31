@@ -11,6 +11,12 @@ public class Maze {
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
     private boolean exitFound = false;
+    private enum Facing {
+        NORTH,
+	WEST,
+	EAST,
+	SOUTH
+    }
 
 
 
@@ -25,7 +31,6 @@ public class Maze {
 
     //displays the Maze with the path taken
     public void displayPath() {
-
     }
 
 
