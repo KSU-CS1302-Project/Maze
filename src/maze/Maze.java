@@ -39,7 +39,23 @@ public class Maze {
 
     public boolean takeStep() {
         //complete the code here
-        return isAnExit();
+        if(arrMaze[r + 1][c] == 0) {
+        	moveEast();
+        }
+        else if(arrMaze[r][c - 1] == 0) {
+        	moveNorth();
+        }
+        else if(arrMaze[r - 1][c] == 0) {
+        	moveWest();
+        }
+        else if(arrMaze[r][c + 1] == 0) {
+        	moveSouth();
+        }
+        else {
+        	System.exit(0);
+        }
+    	
+    	return isAnExit();
     }
 
     private void moveNorth() {
