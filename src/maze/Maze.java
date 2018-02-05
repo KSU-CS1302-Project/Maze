@@ -9,7 +9,7 @@ package maze;
 
 public class Maze {
 
-    // N, S, W, E
+    //n, s, w, e
     private char direction;
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
