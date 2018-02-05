@@ -12,6 +12,7 @@ public class Maze {
     private int c;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
+    int changes;
    
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
