@@ -11,6 +11,7 @@ public class Maze {
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
     private boolean exitFound = false;
+    int[][] arrMaze;
     private enum Facing {
         NORTH,
 	    WEST,
@@ -22,6 +23,7 @@ public class Maze {
 
 
     public Maze(int[][] arrMaze) {
+        this.arrMaze = arrMaze;
     }
 
     //Prints out the maze without solution
