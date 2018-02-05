@@ -59,7 +59,7 @@ public class Maze {
     	
     	return isAnExit();
     }
-
+//Grant's comment
     private void moveNorth() {
         //complete the code here
     	this.c -=1;
