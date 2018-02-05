@@ -9,6 +9,7 @@ package maze;
 
 public class Maze {
 
+    //n, s, w, e
     private char direction;
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
@@ -17,6 +18,7 @@ public class Maze {
 
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
+        direction = 'N';
     }
 
     //Prints out the maze without solution
