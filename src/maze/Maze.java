@@ -12,16 +12,7 @@ public class Maze {
     private int c;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
-    private enum Facing {
-        NORTH,
-	    WEST,
-	    EAST,
-	    SOUTH
-    }
-
-
-
-
+   
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
     }
