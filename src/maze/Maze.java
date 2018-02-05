@@ -12,7 +12,17 @@ public class Maze {
     private int c;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
-   
+
+    private enum Facing {
+        NORTH,
+	    WEST,
+	    EAST,
+	    SOUTH
+    }
+
+
+
+
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
     }
@@ -39,28 +49,28 @@ public class Maze {
 
     public boolean takeStep() {
         //complete the code here
-
+    	if 
         return isAnExit();
     }
 
     private void moveNorth() {
         //complete the code here
-
+    	this.c -=1;
     }
 
     private void moveSouth() {
         //complete the code here
-
+    	this.c += 1;
     }
 
     private void moveEast() {
         //complete the code here
-
+    	this.r += 1;
     }
 
     private void moveWest() {
         //complete the code here
-
+    	this.r -= 1;
     }
 
 
