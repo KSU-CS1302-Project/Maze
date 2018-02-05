@@ -84,7 +84,26 @@ public class Maze {
 	    	else if(arrMaze[r + 1][c] == 1) {
 	    		moveEast();
 	    	}
-	    	else if(arrMaze[r][c - 1] == 1)
+	    	else if(arrMaze[r][c - 1] == 1) {
+	    		moveNorth();
+	    	}
+	    }
+	    else if(direction == 'w') {
+	    	if(arrMaze[r][c - 1] == 1) {
+	    		moveNorth();
+	    	}
+	    	else if(arrMaze[r - 1][c] == 1) {
+	    		moveWest();
+	    	}
+	    	else if(arrMaze[r][c + 1] == 1) {
+	    		moveSouth();
+	    	}
+	    	else if(arrMaze[r + 1][c] == 1) {
+	    		moveEast();
+	    	}
+	    }
+	    else {
+	    	System.exit(0);
 	    }
 	    
     	
