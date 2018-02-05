@@ -5,6 +5,8 @@ package maze;
  * KSU Programming Principles II
  */
 
+//brendan's comment
+
 public class Maze {
 
     private char direction;
