@@ -41,21 +41,50 @@ public class Maze {
 
     public boolean takeStep() {
         //complete the code here
-        if(arrMaze[r + 1][c] == 1) {
-        	moveEast();
-        }
-        else if(arrMaze[r][c - 1] == 1) {
-        	moveNorth();
-        }
-        else if(arrMaze[r - 1][c] == 1) {
-        	moveWest();
-        }
-        else if(arrMaze[r][c + 1] == 1) {
-        	moveSouth();
-        }
-        else {
-        	System.exit(0);
-        }
+	    if(direction == 'n') {    
+    		if(arrMaze[r + 1][c] == 1) {
+	        	moveEast();
+	        }
+	        else if(arrMaze[r][c - 1] == 1) {
+	        	moveNorth();
+	        }
+	        else if(arrMaze[r - 1][c] == 1) {
+	        	moveWest();
+	        }
+	        else if(arrMaze[r][c + 1] == 1) {
+	        	moveSouth();
+	        }
+	        else {
+	        	System.exit(0);
+	        }
+	    }
+	    else if(direction == 'e') {
+	    	if(arrMaze[r][c + 1] == 1) {
+	    		moveSouth();
+	    	}
+	    	else if(arrMaze[r + 1][c] == 1) {
+	    		moveEast();
+	    	}
+	    	else if(arrMaze[r][c - 1] == 1) {
+	    		moveNorth();
+	    	}
+	    	else if(arrMaze[r - 1][c] == 1) {
+	    		moveWest();
+	    	}
+	    }
+	    else if(direction == 's') {
+	    	if(arrMaze[r - 1][c] == 1) {
+	    		moveWest();
+	    	}
+	    	else if(arrMaze[r][c + 1] == 1) {
+	    		moveSouth();
+	    	}
+	    	else if(arrMaze[r + 1][c] == 1) {
+	    		moveEast();
+	    	}
+	    	else if(arrMaze[r][c - 1] == 1)
+	    }
+	    
     	
     	return isAnExit();
     }
@@ -63,21 +92,25 @@ public class Maze {
     private void moveNorth() {
         //complete the code here
     	this.c -=1;
+    	this.direction = 'n';
     }
 
     private void moveSouth() {
         //complete the code here
     	this.c += 1;
+    	this.direction = 's';
     }
 
     private void moveEast() {
         //complete the code here
     	this.r += 1;
+    	this.direction = 'e';
     }
 
     private void moveWest() {
         //complete the code here
     	this.r -= 1;
+    	this.direction = 'w';
     }
 
 
