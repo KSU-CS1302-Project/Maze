@@ -13,24 +13,34 @@ public class Maze {
     private boolean exitFound = false;
     private enum Facing {
         NORTH,
-	WEST,
-	EAST,
-	SOUTH
+	    WEST,
+	    EAST,
+	    SOUTH
     }
 
 
 
 
     public Maze(int[][] arrMaze) {
-     }
+    }
 
     //Prints out the maze without solution
     public void displayMaze() {
-
+        for (int i = 0; i < arrMaze.length; ++i) {
+		    for (int o = 0; o < arrMaze[i].length; ++o) {
+		        if (arrMaze[i][o] == 0) {
+				    System.out.print("#");}
+			    else {
+				    System.out.print(" ");}
+		    }
+		    System.out.println();
+	    }
     }
 
     //displays the Maze with the path taken
     public void displayPath() {
+        //temporary
+        displayMaze();
     }
 
 
