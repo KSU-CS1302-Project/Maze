@@ -49,7 +49,6 @@ public class Maze {
 
     public boolean takeStep() {
         //complete the code here
-    	if 
         return isAnExit();
     }
 
