@@ -112,24 +112,32 @@ public class Maze {
 //Grant's comment
     private void moveNorth() {
         //complete the code here
+    	arrMaze[r][c - 1] = '@';
+    	arrMaze[r][c] = '1';
     	this.c -=1;
     	this.direction = 'n';
     }
 
     private void moveSouth() {
         //complete the code here
+    	arrMaze[r][c + 1] = '@';
+    	arrMaze[r][c] = '1';
     	this.c += 1;
     	this.direction = 's';
     }
 
     private void moveEast() {
         //complete the code here
+    	arrMaze[r + 1][c] = '@';
+    	arrMaze[r][c] = '1';
     	this.r += 1;
     	this.direction = 'e';
     }
 
     private void moveWest() {
         //complete the code here
+    	arrMaze[r - 1][c] = '@';
+    	arrMaze[r][c] = '1';
     	this.r -= 1;
     	this.direction = 'w';
     }
