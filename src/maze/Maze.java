@@ -116,6 +116,7 @@ public class Maze {
     	arrMaze[r][c] = '1';
     	this.c -=1;
     	this.direction = 'n';
+    	displayMaze();
     }
 
     private void moveSouth() {
@@ -124,6 +125,7 @@ public class Maze {
     	arrMaze[r][c] = '1';
     	this.c += 1;
     	this.direction = 's';
+    	displayMaze();
     }
 
     private void moveEast() {
@@ -132,6 +134,7 @@ public class Maze {
     	arrMaze[r][c] = '1';
     	this.r += 1;
     	this.direction = 'e';
+    	displayMaze();
     }
 
     private void moveWest() {
@@ -140,6 +143,7 @@ public class Maze {
     	arrMaze[r][c] = '1';
     	this.r -= 1;
     	this.direction = 'w';
+    	displayMaze();
     }
 
 
