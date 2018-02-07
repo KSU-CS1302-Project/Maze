@@ -25,12 +25,13 @@ public class Maze {
     public void displayMaze() {
         for (int i = 0; i < arrMaze.length; ++i) {
 		    for (int o = 0; o < arrMaze[i].length; ++o) {
-		        if (arrMaze[i][o] == 0) {
-				    System.out.print("#");}
+		       if (arrMaze[i][o] == 0) {
+				   System.out.print("#");}
 		        else if (arrMaze[i][o] == '@') {
 		        	System.out.print("@");}
 		        else {
 				    System.out.print(" ");}
+
 		    }
 		    System.out.println();
 	    }
@@ -72,9 +73,9 @@ public class Maze {
 	    	else if(arrMaze[r - 1][c] == 1) {
 	    		moveNorth();
 	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
-	    		moveWest();
-	    	}
+	    	
+	    	else moveWest();
+
 	    }
 	    else if(direction == 's') {
 	    	if(arrMaze[r][c - 1] == 1) {
@@ -86,9 +87,8 @@ public class Maze {
 	    	else if(arrMaze[r][c + 1] == 1) {
 	    		moveEast();
 	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
-	    		moveNorth();
-	    	}
+	    	else moveNorth();
+	    	
 	    }
 	    else if(direction == 'w') {
 	    	if(arrMaze[r - 1][c] == 1) {
@@ -100,9 +100,7 @@ public class Maze {
 	    	else if(arrMaze[r + 1][c] == 1) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
-	    		moveEast();
-	    	}
+	    	else moveEast();
 	    }
 	    else {
 	    	System.exit(0);
@@ -160,6 +158,9 @@ public class Maze {
     //finds the path without stopping at every step
     public void findExit() {
         //complete the code here
+    	        while(!isAnExit()) // if it is not an exit then call the takeStep method.
+    	            takeStep();
+
 
     }
 }
