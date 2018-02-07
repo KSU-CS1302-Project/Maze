@@ -11,8 +11,8 @@ public class Maze {
 
     //n, s, w, e 
     private char direction;
-    private int r;  // x position of the mouse
-    private int c;  //y position of the mouse
+    private int r = 0;  // x position of the mouse
+    private int c = 16;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
 
@@ -27,7 +27,9 @@ public class Maze {
 		    for (int o = 0; o < arrMaze[i].length; ++o) {
 		        if (arrMaze[i][o] == 0) {
 				    System.out.print("#");}
-			    else {
+		        else if (arrMaze[i][o] == '@') {
+		        	System.out.print("@");}
+		        else {
 				    System.out.print(" ");}
 		    }
 		    System.out.println();
