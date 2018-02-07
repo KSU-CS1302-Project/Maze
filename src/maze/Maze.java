@@ -11,8 +11,8 @@ public class Maze {
 
     //n, s, w, e 
     private char direction;
-    private int r = 0;  // x position of the mouse
-    private int c = 16;  //y position of the mouse
+    private int r = 16;  // x position of the mouse
+    private int c = 0;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
 
@@ -46,16 +46,16 @@ public class Maze {
     public boolean takeStep() {
         //complete the code here
 	    if(direction == 'n') {    
-    		if(arrMaze[r + 1][c] == 1) {
+    		if(arrMaze[r][c + 1] == 1) {
 	        	moveEast();
 	        }
-	        else if(arrMaze[r][c - 1] == 1) {
+	        else if(arrMaze[r - 1][c] == 1) {
 	        	moveNorth();
 	        }
-	        else if(arrMaze[r - 1][c] == 1) {
+	        else if(arrMaze[r][c - 1] == 1) {
 	        	moveWest();
 	        }
-	        else if(arrMaze[r][c + 1] == 1) {
+	        else if(arrMaze[r + 1][c] == 1) {
 	        	moveSouth();
 	        }
 	        else {
@@ -63,44 +63,44 @@ public class Maze {
 	        }
 	    }
 	    else if(direction == 'e') {
-	    	if(arrMaze[r][c + 1] == 1) {
+	    	if(arrMaze[r + 1][c] == 1) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
+	    	else if(arrMaze[r][c + 1] == 1) {
 	    		moveEast();
 	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
+	    	else if(arrMaze[r - 1][c] == 1) {
 	    		moveNorth();
 	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
+	    	else if(arrMaze[r][c - 1] == 1) {
 	    		moveWest();
 	    	}
 	    }
 	    else if(direction == 's') {
-	    	if(arrMaze[r - 1][c] == 1) {
+	    	if(arrMaze[r][c - 1] == 1) {
 	    		moveWest();
 	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
+	    	else if(arrMaze[r + 1][c] == 1) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
+	    	else if(arrMaze[r][c + 1] == 1) {
 	    		moveEast();
 	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
+	    	else if(arrMaze[r - 1][c] == 1) {
 	    		moveNorth();
 	    	}
 	    }
 	    else if(direction == 'w') {
-	    	if(arrMaze[r][c - 1] == 1) {
+	    	if(arrMaze[r - 1][c] == 1) {
 	    		moveNorth();
 	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
+	    	else if(arrMaze[r][c - 1] == 1) {
 	    		moveWest();
 	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
+	    	else if(arrMaze[r + 1][c] == 1) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
+	    	else if(arrMaze[r][c + 1] == 1) {
 	    		moveEast();
 	    	}
 	    }
@@ -114,36 +114,36 @@ public class Maze {
 //Grant's comment
     private void moveNorth() {
         //complete the code here
-    	arrMaze[r][c - 1] = '@';
+    	arrMaze[r - 1][c] = '@';
     	arrMaze[r][c] = '1';
-    	this.c -=1;
+    	this.r -=1;
     	this.direction = 'n';
     	displayMaze();
     }
 
     private void moveSouth() {
         //complete the code here
-    	arrMaze[r][c + 1] = '@';
+    	arrMaze[r + 1][c] = '@';
     	arrMaze[r][c] = '1';
-    	this.c += 1;
+    	this.r += 1;
     	this.direction = 's';
     	displayMaze();
     }
 
     private void moveEast() {
         //complete the code here
-    	arrMaze[r + 1][c] = '@';
+    	arrMaze[r][c + 1] = '@';
     	arrMaze[r][c] = '1';
-    	this.r += 1;
+    	this.c += 1;
     	this.direction = 'e';
     	displayMaze();
     }
 
     private void moveWest() {
         //complete the code here
-    	arrMaze[r - 1][c] = '@';
+    	arrMaze[r][c - 1] = '@';
     	arrMaze[r][c] = '1';
-    	this.r -= 1;
+    	this.c -= 1;
     	this.direction = 'w';
     	displayMaze();
     }
