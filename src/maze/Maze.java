@@ -40,73 +40,75 @@ public class Maze {
         displayMaze();
     }
 
+	// this needs some documentation.
+	// this returns a one-dimensional array.
+	// if the adjacent tile in the character's direction is a path, it will contains the x,y position of the next step.
+	// if the tile is a wall, it will contain 2 elements, -1, -1.
+	// the -1,-1 error values are chosen because, since the maze is stored as array, positions will always be >= 0.
+	private int[] canMoveForward()
+	{
+		int[] position = {-1, -1};
+		switch (direction) {
+			case 'n':
+				if (arrMaze[r][c+1] == 1) {
+					position[0] = r;
+					position[1] = c+1;
+				}
+				break;
+			case 's':
+				if (arrMaze[r][c-1] == 1) {
+					position[0] = r;
+					position[1] = c-1;
+				}
+				break;
+			case 'e':
+				if (arrMaze[r+1][c] == 1) {
+					position[0] = r+1;
+					position[1] = c;
+				}
+			case 'w':
+				if (arrMaze[r-1][c] == 1) {
+					position[0] = r-1;
+					position[1] = c;
+				}
+			default:
+				System.out.println("Uh, what?  Go back to preschool.");
+				break;
+		}
+		return position;
+	}
+
+	private void turnLeft()
+	{
+		switch (direction) {
+			case 'e':
+				direction = 'n';
+				break;
+			case 'n':
+				direction = 'w';
+				break;
+			case 'w':
+				direction = 's';
+				break;
+			case 's':
+				direction = 'e';
+				break;
+		}
+	}
+
 
     public boolean takeStep() {
         //complete the code here
-	    if(direction == 'n') {    
-    		if(arrMaze[r + 1][c] == 1) {
-	        	moveEast();
-	        }
-	        else if(arrMaze[r][c - 1] == 1) {
-	        	moveNorth();
-	        }
-	        else if(arrMaze[r - 1][c] == 1) {
-	        	moveWest();
-	        }
-	        else if(arrMaze[r][c + 1] == 1) {
-	        	moveSouth();
-	        }
-	        else {
-	        	System.exit(0);
-	        }
-	    }
-	    else if(direction == 'e') {
-	    	if(arrMaze[r][c + 1] == 1) {
-	    		moveSouth();
-	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
-	    		moveEast();
-	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
-	    		moveNorth();
-	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
-	    		moveWest();
-	    	}
-	    }
-	    else if(direction == 's') {
-	    	if(arrMaze[r - 1][c] == 1) {
-	    		moveWest();
-	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
-	    		moveSouth();
-	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
-	    		moveEast();
-	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
-	    		moveNorth();
-	    	}
-	    }
-	    else if(direction == 'w') {
-	    	if(arrMaze[r][c - 1] == 1) {
-	    		moveNorth();
-	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
-	    		moveWest();
-	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
-	    		moveSouth();
-	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
-	    		moveEast();
-	    	}
-	    }
-	    else {
-	    	System.exit(0);
-	    }
-	    
-    	
+		int[] position = new int[2];
+		position = canMoveForward();
+		while (position[0] == -1) {
+			turnLeft();
+			position = canMoveForward();
+		}
+		r = position[0];
+		c = position[1];
+
+		// return value still unimplemented
     	return isAnExit();
     }
 //Grant's comment
