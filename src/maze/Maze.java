@@ -18,7 +18,7 @@ public class Maze {
 
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
-        direction = 'N';
+        direction = 'n';
     }
 
     //Prints out the maze without solution
