@@ -148,7 +148,7 @@ public class Maze {
 
 
     private boolean isAnExit() {
-        //complete the code here
+        boolean exitFound = ( r == 0 || r == arrMaze.length || c == 0 || c == arrMaze[0].length );
         return exitFound;
     }
 
