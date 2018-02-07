@@ -151,7 +151,8 @@ public class Maze {
         //boolean exitFound = ( r == 0 || r == arrMaze.length || c == 0 || c == arrMaze[0].length );
 		// temporary fix: the exit of this particular maze is on the right side, so I'll check that.
 		// we need to all talk about a permanent fix.
-		boolean exitFound = ( c == arrMaze[0].length );
+    	exitFound=arrMaze[r].length-1 == c; // exit is found if the last location of row is equal to the columns
+ 	   
         return exitFound;
     }
 
