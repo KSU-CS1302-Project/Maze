@@ -31,7 +31,7 @@ public class Maze {
 				} else if (arrMaze[i][o] == '@') {
 		        	System.out.print("@");
 					System.out.print(" ");
-				} else if (arrMaze[i][o] == '2') {
+				} else if (arrMaze[i][o] == 2) {
 					System.out.print("~");
 					System.out.print(" ");
 				} else {
