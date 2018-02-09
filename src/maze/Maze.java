@@ -31,6 +31,9 @@ public class Maze {
 				} else if (arrMaze[i][o] == '@') {
 		        	System.out.print("@");
 					System.out.print(" ");
+				} else if (arrMaze[i][o] == '2') {
+					System.out.print("~");
+					System.out.print(" ");
 				} else {
 		        	System.out.print(" ");
 					System.out.print(" ");
@@ -46,20 +49,30 @@ public class Maze {
         displayMaze();
     }
 
+	private boolean isWalkable(int r, int c)
+	{
+		int tile = arrMaze[r][c];
+		if (tile == 1 || tile == 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
     public boolean takeStep() {
         //complete the code here
 	    if(direction == 'n') {    
-    		if(arrMaze[r][c + 1] == 1) {
+    		if(isWalkable(r, c+1)) {
 	        	moveEast();
 	        }
-	        else if(arrMaze[r - 1][c] == 1) {
+	        else if(isWalkable(r-1, c)) {
 	        	moveNorth();
 	        }
-	        else if(arrMaze[r][c - 1] == 1) {
+	        else if(isWalkable(r, c-1)) {
 	        	moveWest();
 	        }
-	        else if(arrMaze[r + 1][c] == 1) {
+	        else if(isWalkable(r+1, c)) {
 	        	moveSouth();
 	        }
 	        else {
@@ -67,43 +80,44 @@ public class Maze {
 	        }
 	    }
 	    else if(direction == 'e') {
-	    	if(arrMaze[r + 1][c] == 1) {
+	    	if(isWalkable(r+1, c)) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
+	    	else if(isWalkable(r, c+1)) {
 	    		moveEast();
 	    	}
-	    	else if(arrMaze[r - 1][c] == 1) {
+	    	else if(isWalkable(r-1, c)) {
 	    		moveNorth();
-	    	}
-	    	
-	    	else moveWest();
-
+	    	} else if (isWalkable(r, c-1)) {
+				moveWest();
+			}
 	    }
 	    else if(direction == 's') {
-	    	if(arrMaze[r][c - 1] == 1) {
+	    	if(isWalkable(r, c-1)) {
 	    		moveWest();
 	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
+	    	else if(isWalkable(r+1, c)) {
 	    		moveSouth();
 	    	}
-	    	else if(arrMaze[r][c + 1] == 1) {
+	    	else if(isWalkable(r, c+1)) {
 	    		moveEast();
-	    	}
-	    	else moveNorth();
+	    	} else if(isWalkable(r-1, c)) {
+				moveNorth();
+			}
 	    	
 	    }
 	    else if(direction == 'w') {
-	    	if(arrMaze[r - 1][c] == 1) {
+	    	if(isWalkable(r-1, c)) {
 	    		moveNorth();
 	    	}
-	    	else if(arrMaze[r][c - 1] == 1) {
+	    	else if(isWalkable(r, c-1)) {
 	    		moveWest();
 	    	}
-	    	else if(arrMaze[r + 1][c] == 1) {
+	    	else if(isWalkable(r+1, c)) {
 	    		moveSouth();
-	    	}
-	    	else moveEast();
+	    	} else if (isWalkable(r, c+1)) {
+				moveEast();
+			}
 	    }
 	    else {
 	    	System.exit(0);
