@@ -130,7 +130,7 @@ public class Maze {
     private void moveNorth() {
         //complete the code here
     	arrMaze[r - 1][c] = '@';
-    	arrMaze[r][c] = 1;
+    	arrMaze[r][c] = 2;
     	this.r -=1;
     	this.direction = 'n';
     	displayMaze();
@@ -139,7 +139,7 @@ public class Maze {
     private void moveSouth() {
         //complete the code here
     	arrMaze[r + 1][c] = '@';
-    	arrMaze[r][c] = 1;
+    	arrMaze[r][c] = 2;
     	this.r += 1;
     	this.direction = 's';
     	displayMaze();
@@ -148,7 +148,7 @@ public class Maze {
     private void moveEast() {
         //complete the code here
     	arrMaze[r][c + 1] = '@';
-    	arrMaze[r][c] = 1;
+    	arrMaze[r][c] = 2;
     	this.c += 1;
     	this.direction = 'e';
     	displayMaze();
@@ -157,7 +157,7 @@ public class Maze {
     private void moveWest() {
         //complete the code here
     	arrMaze[r][c - 1] = '@';
-    	arrMaze[r][c] = 1;
+    	arrMaze[r][c] = 2;
     	this.c -= 1;
     	this.direction = 'w';
     	displayMaze();
