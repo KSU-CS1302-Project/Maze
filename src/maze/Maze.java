@@ -43,7 +43,6 @@ public class Maze {
 
     //displays the Maze with the path taken
     public void displayPath() {
-        //temporary
         displayMaze();
     }
 
