@@ -164,7 +164,7 @@ public class Maze {
     private boolean isAnExit() {
 		if (stepsTaken < 4)
 			return false;
-		return ( r == 0 || r == arrMaze.length - 1 || c == 0 c == arrMaze[r].length -1);
+		return ( r == 0 || r == arrMaze.length - 1 || c == 0 || c == arrMaze[r].length -1);
     }
 
     //finds the path without stopping at every step
