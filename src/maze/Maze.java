@@ -62,7 +62,6 @@ public class Maze {
 
 
     public boolean takeStep() {
-        //complete the code here
 		++stepsTaken;
 	    if(direction == 'n') {    
     		if(isWalkable(r, c+1)) {
@@ -130,7 +129,6 @@ public class Maze {
     }
 
     private void moveNorth() {
-        //complete the code here
     	arrMaze[r - 1][c] = '@';
     	arrMaze[r][c] = 2;
     	this.r -=1;
@@ -139,7 +137,6 @@ public class Maze {
     }
 
     private void moveSouth() {
-        //complete the code here
     	arrMaze[r + 1][c] = '@';
     	arrMaze[r][c] = 2;
     	this.r += 1;
@@ -148,7 +145,6 @@ public class Maze {
     }
 
     private void moveEast() {
-        //complete the code here
     	arrMaze[r][c + 1] = '@';
     	arrMaze[r][c] = 2;
     	this.c += 1;
@@ -157,7 +153,6 @@ public class Maze {
     }
 
     private void moveWest() {
-        //complete the code here
     	arrMaze[r][c - 1] = '@';
     	arrMaze[r][c] = 2;
     	this.c -= 1;
@@ -174,7 +169,6 @@ public class Maze {
 
     //finds the path without stopping at every step
     public void findExit() {
-    	while(!isAnExit()) // if it is not an exit then call the takeStep method.
-    	    takeStep();
+    	while(!takeStep()); // if it is not an exit then call the takeStep method.
     }
 }
