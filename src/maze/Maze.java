@@ -77,65 +77,60 @@ public class Maze {
 	    if(direction == 'n') {    
     		if(isWalkable(r, c+1)) {
 	        	moveEast();
-	        }
-	        else if(isWalkable(r-1, c)) {
+	        } else if(isWalkable(r-1, c)) {
 	        	moveNorth();
-	        }
-	        else if(isWalkable(r, c-1)) {
+	        } else if(isWalkable(r, c-1)) {
 	        	moveWest();
-	        }
-	        else if(isWalkable(r+1, c)) {
+	        } else if(isWalkable(r+1, c)) {
 	        	moveSouth();
-	        }
-	        else {
+	        } else {
 	        	System.exit(0);
 	        }
 	    }
 	    else if(direction == 'e') {
 	    	if(isWalkable(r+1, c)) {
 	    		moveSouth();
-	    	}
-	    	else if(isWalkable(r, c+1)) {
+	    	} else if(isWalkable(r, c+1)) {
 	    		moveEast();
-	    	}
-	    	else if(isWalkable(r-1, c)) {
+	    	} else if(isWalkable(r-1, c)) {
 	    		moveNorth();
 	    	} else if (isWalkable(r, c-1)) {
 				moveWest();
-			}
+			} else {
+	        	System.exit(0);
+	        }
+
 	    }
 	    else if(direction == 's') {
 	    	if(isWalkable(r, c-1)) {
 	    		moveWest();
-	    	}
-	    	else if(isWalkable(r+1, c)) {
+	    	} else if(isWalkable(r+1, c)) {
 	    		moveSouth();
-	    	}
-	    	else if(isWalkable(r, c+1)) {
+	    	} else if(isWalkable(r, c+1)) {
 	    		moveEast();
 	    	} else if(isWalkable(r-1, c)) {
 				moveNorth();
-			}
+			} else {
+	        	System.exit(0);
+	        }
 	    	
 	    }
 	    else if(direction == 'w') {
 	    	if(isWalkable(r-1, c)) {
 	    		moveNorth();
-	    	}
-	    	else if(isWalkable(r, c-1)) {
+	    	} else if(isWalkable(r, c-1)) {
 	    		moveWest();
-	    	}
-	    	else if(isWalkable(r+1, c)) {
+	    	} else if(isWalkable(r+1, c)) {
 	    		moveSouth();
 	    	} else if (isWalkable(r, c+1)) {
 				moveEast();
-			}
-	    }
-	    else {
+			} else {
+	        	System.exit(0);
+	        }
+	    } else {
 	    	System.exit(0);
 	    }
 	    
-    	
     	return isAnExit();
     }
 
