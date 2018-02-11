@@ -9,14 +9,18 @@ public class Maze {
 
     //n, s, w, e 
     private char direction;
-    private int r = 16;  // x position of the mouse
-    private int c = 0;  //y position of the mouse
+    private int r;  // x position of the mouse
+    private int c;  //y position of the mouse
     private boolean exitFound = false;
     int[][] arrMaze;
+	int stepsTaken = 0;
 
     public Maze(int[][] arrMaze) {
         this.arrMaze = arrMaze;
         direction = 'n';
+		r = 16;
+		c = 0;
+		stepsTaken = 0;
     }
 
     //Prints out the maze without solution
@@ -59,6 +63,7 @@ public class Maze {
 
     public boolean takeStep() {
         //complete the code here
+		++stepsTaken;
 	    if(direction == 'n') {    
     		if(isWalkable(r, c+1)) {
 	        	moveEast();
@@ -162,20 +167,14 @@ public class Maze {
 
 
     private boolean isAnExit() {
-        //boolean exitFound = ( r == 0 || r == arrMaze.length || c == 0 || c == arrMaze[0].length );
-		// temporary fix: the exit of this particular maze is on the right side, so I'll check that.
-		// we need to all talk about a permanent fix.
-    	exitFound=arrMaze[r].length-1 == c; // exit is found if the last location of row is equal to the columns
- 	   
-        return exitFound;
+		if (stepsTaken < 4)
+			return false;
+		return ( r == 0 || r == arrMaze.length - 1 || c == 0 c == arrMaze[r].length -1);
     }
 
     //finds the path without stopping at every step
     public void findExit() {
-        //complete the code here
-    	        while(!isAnExit()) // if it is not an exit then call the takeStep method.
-    	            takeStep();
-
-
+    	while(!isAnExit()) // if it is not an exit then call the takeStep method.
+    	    takeStep();
     }
 }
