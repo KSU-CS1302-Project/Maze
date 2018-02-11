@@ -4,6 +4,10 @@ package maze;
  * Created by Tulin Kilinc 1/19/2017.
  * KSU Programming Principles II
  */
+/**
+ * Edited by Spencer Brown, Brendan Pope, Grant Williams.
+ * CS 1302-05 Spring 2018 Professor Nalamothu.
+ */
 
 public class Maze {
 
