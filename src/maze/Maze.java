@@ -5,8 +5,6 @@ package maze;
  * KSU Programming Principles II
  */
 
-//brendan's comment
-
 public class Maze {
 
     //n, s, w, e 
@@ -126,7 +124,7 @@ public class Maze {
     	
     	return isAnExit();
     }
-//Grant's comment
+
     private void moveNorth() {
         //complete the code here
     	arrMaze[r - 1][c] = '@';
