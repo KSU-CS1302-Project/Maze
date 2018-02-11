@@ -30,6 +30,22 @@ public class Maze {
 		       if (arrMaze[i][o] == 0) {
 				   System.out.print("#");
 				   System.out.print(" ");
+				} else {
+		        	System.out.print(" ");
+					System.out.print(" ");
+				}
+			}
+		    System.out.println();
+	    }
+    }
+
+    //displays the Maze with the path taken
+    public void displayPath() {
+        for (int i = 0; i < arrMaze.length; ++i) {
+		    for (int o = 0; o < arrMaze[i].length; ++o) {
+		       if (arrMaze[i][o] == 0) {
+				   System.out.print("#");
+				   System.out.print(" ");
 				} else if (arrMaze[i][o] == '@') {
 		        	System.out.print("@");
 					System.out.print(" ");
@@ -43,11 +59,6 @@ public class Maze {
 			}
 		    System.out.println();
 	    }
-    }
-
-    //displays the Maze with the path taken
-    public void displayPath() {
-        displayMaze();
     }
 
 	private boolean isWalkable(int r, int c)
