@@ -15,7 +15,6 @@ public class Maze {
     private char direction;
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
-    private boolean exitFound = false;
     int[][] arrMaze;
 	int stepsTaken = 0;
 
