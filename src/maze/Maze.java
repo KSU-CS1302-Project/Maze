@@ -15,7 +15,6 @@ public class Maze {
     private char direction; //n, s, w, e 
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
-    private boolean exitFound = false;
     int[][] arrMaze;
 	int stepsTaken = 0;
 
@@ -34,7 +33,7 @@ public class Maze {
 		       if (arrMaze[i][o] == 0) {
 				   System.out.print("#");
 				   System.out.print(" ");
-				} else {
+				}else {
 		        	System.out.print(" ");
 					System.out.print(" ");
 				}
@@ -65,6 +64,7 @@ public class Maze {
 		    System.out.println();
 	    }
     }
+    
     private boolean isWalkable(int r, int c)
     	{
     		int tile = arrMaze[r][c];
@@ -77,58 +77,56 @@ public class Maze {
     
     public boolean takeStep() {
         if(direction == 'n'){
-        	if(isWalkable(r, c+1)) { 
+        	if(isWalkable(r, c + 1)) { 
                 moveEast();
-            }   else if(isWalkable(r-1, c)) {
+            }   else if(isWalkable(r - 1, c)) {
                 moveNorth();
             }
-            else if(isWalkable(r, c-1)) {
+            else if(isWalkable(r, c - 1)) {
                 moveWest();
             }
             else
                 moveSouth();
         }
-        else if(direction=='e'){
-        	if(isWalkable(r+1, c)){
+        else if(direction == 'e'){
+        	if(isWalkable(r + 1, c)){
                 moveSouth();
             }
-        	else if(isWalkable(r, c+1)){
+        	else if(isWalkable(r, c + 1)){
                 moveEast();
             }
-        	else if(isWalkable(r-1, c)){
+        	else if(isWalkable(r - 1, c)){
                 moveNorth();
             }
             else
                 moveWest();
         }
-        else if(direction=='w'){
-        	if(isWalkable(r-1, c)){
+        else if(direction == 'w'){
+        	if(isWalkable(r - 1, c)){
                 moveNorth();
             }
-        	else if(isWalkable(r, c-1)){
+        	else if(isWalkable(r, c - 1)){
                 moveWest();
             }
-        	else if(isWalkable(r+1, c)){
+        	else if(isWalkable(r + 1, c)){
                 moveSouth();
             }
             else
                 moveEast();
         }
-        else if(direction=='s'){
-        	if(isWalkable(r, c-1)){
+        else if(direction == 's'){
+        	if(isWalkable(r, c - 1)){
                 moveWest();
             }
-        	else if(isWalkable(r+1, c)){
+        	else if(isWalkable(r + 1, c)){
                 moveSouth();
             }
-        	else if(isWalkable(r, c+1)){
+        	else if(isWalkable(r, c + 1)){
                 moveEast();
             }
             else
                 moveNorth();
         }
-
-	    
     	return isAnExit();
     }
 
