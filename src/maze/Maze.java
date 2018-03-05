@@ -15,6 +15,7 @@ public class Maze {
     private char direction;
     private int r;  // x position of the mouse
     private int c;  //y position of the mouse
+    private boolean exitFound = false;
     int[][] arrMaze;
 	int stepsTaken = 0;
 
@@ -55,7 +56,8 @@ public class Maze {
 				} else if (arrMaze[i][o] == 2) {
 					System.out.print("~");
 					System.out.print(" ");
-				} else {
+					
+				}else {
 		        	System.out.print(" ");
 					System.out.print(" ");
 				}
@@ -64,116 +66,137 @@ public class Maze {
 	    }
     }
 
-	private boolean isWalkable(int r, int c)
-	{
-		int tile = arrMaze[r][c];
-		if (tile == 1 || tile == 2) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-
     public boolean takeStep() {
-		++stepsTaken;
-	    if(direction == 'n') {    
-    		if(isWalkable(r, c+1)) {
-	        	moveEast();
-	        } else if(isWalkable(r-1, c)) {
-	        	moveNorth();
-	        } else if(isWalkable(r, c-1)) {
-	        	moveWest();
-	        } else if(isWalkable(r+1, c)) {
-	        	moveSouth();
-	        } else {
-	        	System.exit(0);
-	        }
-	    }
-	    else if(direction == 'e') {
-	    	if(isWalkable(r+1, c)) {
-	    		moveSouth();
-	    	} else if(isWalkable(r, c+1)) {
-	    		moveEast();
-	    	} else if(isWalkable(r-1, c)) {
-	    		moveNorth();
-	    	} else if (isWalkable(r, c-1)) {
-				moveWest();
-			} else {
-	        	System.exit(0);
-	        }
+        if(direction == 'n'){
+            if(arrMaze[r][c + 1]==1) { 
+                moveEast();
+            } else if(arrMaze[r - 1][c] == 1 || arrMaze[r - 1][c] == 2) {
+                moveNorth();
+            }
+            else if(arrMaze[r][c - 1] == 1) {
+                moveWest();
+            }
+            else
+                moveSouth();
+        }
+        else if(direction=='e'){
+            if(arrMaze[r + 1][c]==1){
+                moveSouth();
+            }
+            else if(arrMaze[r][c + 1]==1 || arrMaze[r][c+1] == 2){
+                moveEast();
+            }
+            else if(arrMaze[r - 1][c]==1){
+                moveNorth();
+            }
+            else
+                moveWest();
+        }
+        else if(direction=='w'){
+            if(arrMaze[r-1][c]==1){
+                moveNorth();
+            }
+            else if(arrMaze[r][c-1]==1 || arrMaze[r][c - 1] == 2){
+                moveWest();
+            }
+            else if(arrMaze[r + 1][c]==1){
+                moveSouth();
+            }
+            else
+                moveEast();
+        }
+        else if(direction=='s'){
+            if(arrMaze[r][c - 1]==1){
+                moveWest();
+            }
+            else if(arrMaze[r + 1][c]==1 || arrMaze[r + 1][c] == 2){
+                moveSouth();
+            }
+            else if(arrMaze[r][c + 1]==1){
+                moveEast();
+            }
+            else
+                moveNorth();
+        }
 
-	    }
-	    else if(direction == 's') {
-	    	if(isWalkable(r, c-1)) {
-	    		moveWest();
-	    	} else if(isWalkable(r+1, c)) {
-	    		moveSouth();
-	    	} else if(isWalkable(r, c+1)) {
-	    		moveEast();
-	    	} else if(isWalkable(r-1, c)) {
-				moveNorth();
-			} else {
-	        	System.exit(0);
-	        }
-	    	
-	    }
-	    else if(direction == 'w') {
-	    	if(isWalkable(r-1, c)) {
-	    		moveNorth();
-	    	} else if(isWalkable(r, c-1)) {
-	    		moveWest();
-	    	} else if(isWalkable(r+1, c)) {
-	    		moveSouth();
-	    	} else if (isWalkable(r, c+1)) {
-				moveEast();
-			} else {
-	        	System.exit(0);
-	        }
-	    } else {
-	    	System.exit(0);
-	    }
 	    
     	return isAnExit();
     }
 
     private void moveNorth() {
-    	arrMaze[r - 1][c] = '@';
-    	arrMaze[r][c] = 2;
-    	this.r -=1;
-    	this.direction = 'n';
-    	displayPath();
+        direction = 'n';
+        r -=1;
+        
+        if(arrMaze[r][c] == 1)
+            arrMaze[r + 1][c] = 2;
+        
+        if(arrMaze[r][c] == 2)
+            arrMaze[r + 1][c] = 3;
+        
+        arrMaze[r][c] = '@';
+        
+        stepsTaken++;
+        displayPath();
+        System.out.println("\n\n");
     }
 
     private void moveSouth() {
-    	arrMaze[r + 1][c] = '@';
-    	arrMaze[r][c] = 2;
-    	this.r += 1;
-    	this.direction = 's';
-    	displayPath();
+        direction = 's';
+        r +=1;
+        
+        if(arrMaze[r][c] == 1)
+            arrMaze[r - 1][c] = 2;
+        
+        if(arrMaze[r][c] == 2)
+            arrMaze[r - 1][c] = 3;
+        
+        arrMaze[r][c] = '@';
+        
+        stepsTaken++;
+        displayPath();
+        System.out.println("\n\n");
     }
 
     private void moveEast() {
-    	arrMaze[r][c + 1] = '@';
-    	arrMaze[r][c] = 2;
-    	this.c += 1;
-    	this.direction = 'e';
-    	displayPath();
+        direction = 'e';
+        c +=1;
+        
+        if(arrMaze[r][c] == 1)
+            arrMaze[r][c - 1] = 2;
+        
+        if(arrMaze[r][c] == 2)
+            arrMaze[r][c - 1] = 3;
+        
+        arrMaze[r][c] = '@';
+        
+        stepsTaken++;
+        displayPath();
+        System.out.println("\n\n");
     }
 
     private void moveWest() {
-    	arrMaze[r][c - 1] = '@';
-    	arrMaze[r][c] = 2;
-    	this.c -= 1;
-    	this.direction = 'w';
-    	displayPath();
+    	direction = 'w';
+        c -= 1;
+        
+        if(arrMaze[r][c] == 1)
+            arrMaze[r][c + 1] = 2;
+        
+        if(arrMaze[r][c] == 2)
+            arrMaze[r][c + 1] = 3;
+        
+        arrMaze[r][c] = '@';
+        
+        stepsTaken++;
+        displayPath();
+        System.out.println("\n\n");
     }
+
 
 
     private boolean isAnExit() {
 		if (stepsTaken < 4)
 			return false;
-		return ( r == 0 || r == arrMaze.length - 1 || c == 0 || c == arrMaze[r].length -1);
+    	return ( r == 0 || r == arrMaze.length - 1 || c == 0 || c == arrMaze[r].length -1);
     }
 
     //finds the path without stopping at every step
